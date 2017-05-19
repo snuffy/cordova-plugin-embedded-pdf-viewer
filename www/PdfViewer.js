@@ -24,14 +24,14 @@ exports.openPdf = function (uri, title, options, success, error) {
             exec(success, error, "SimplePDF", "showPDF", [uri, title, options.tintColor]);
             break;
         case "windows":
-            windowsPdf(uri, function () {}, success, error, error);
+            windowsPdf(uri, title, function () {}, success, error, error);
             break;
         default:
             error("Your platform is not supported.");
     }
 };
 
-function windowsPdf(url, onShow, onClose, onMissingApp, onError) {
+function windowsPdf(url, title, onShow, onClose, onMissingApp, onError) {
     var temp = document.getElementsByTagName('base')[0].href;
     document.getElementsByTagName('base')[0].href = "";
     var contentType = "application/pdf";
@@ -84,9 +84,9 @@ function windowsPdf(url, onShow, onClose, onMissingApp, onError) {
     }
 
     try {
-        options = {};
+        options = {title: title};
 
-        if (!options.title)
+        if (typeof options.title !== "string" || options.title.trim() === "")
             options.title = url.split('/').pop(); // strip file name from url
         if(!url)
             onError();
