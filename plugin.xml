@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-native-pdf-viewer" version="0.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>NativePdfViewer</name>
+<plugin id="cordova-plugin-embedded-pdf-viewer" version="0.0.3" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>PdfViewer</name>
     <description>Native PDF viewer for iOS and Android</description>
     <engines>
         <engine name="cordova" version=">=6.0.0"/>
+        <engine name="cordova-windows" version=">=4.4.0"/>
     </engines>
 
-    <js-module name="NativePdfViewer" src="www/NativePdfViewer.js">
-        <clobbers target="NativePdfViewer" />
+    <js-module name="PdfViewer" src="www/PdfViewer.js">
+        <clobbers target="PdfViewer" />
     </js-module>
 
     <!-- ANDROID -->
@@ -45,5 +46,20 @@
         </config-file>
         <header-file src="src/ios/SimplePDF.h" />
         <source-file src="src/ios/SimplePDF.m" />
+    </platform>
+
+    <!-- Windows -->
+    <platform name="windows">
+        <js-module src="src/windows/sitewaertsdocumentviewerProxy_native.js"
+                   name="SitewaertsDocumentViewerProxy">
+            <merges target=""/>
+        </js-module>
+
+        <asset src="src/windows/sitewaertsdocumentviewer" target="sitewaertsdocumentviewer" />
+
+        <asset src="src/common/js/winjs" target="sitewaertsdocumentviewer/js/winjs" />
+        <asset src="src/common/js/angular" target="sitewaertsdocumentviewer/js/angular" />
+        <asset src="src/common/js/angular-winjs/js" target="sitewaertsdocumentviewer/js/angular-winjs" />
+        <asset src="src/common/js/pdfjs-dist/build" target="sitewaertsdocumentviewer/js/pdfjs-dist" />
     </platform>
 </plugin>
