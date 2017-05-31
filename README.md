@@ -10,6 +10,7 @@ $ cordova plugin add https://stash.itizzimo.com/scm/cor/cordova-plugin-embedded-
 ### Supported Platforms
 - Android
 - iOS
+- Windows
 
 ### Example
 
@@ -23,7 +24,7 @@ var options = {
                 swipeHorizontal:false   //Not supported under iOS and Windows
               };
               
-PdfViewer.openPdfUrl(uri, title, options, 
+PdfViewer.openPdf(uri, title, options, 
                         function(success){
                         // success callback
                         },function(error){

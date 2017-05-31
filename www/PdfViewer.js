@@ -32,8 +32,10 @@ exports.openPdf = function (uri, title, options, success, error) {
 };
 
 function windowsPdf(url, title, onShow, onClose, onMissingApp, onError) {
-    var temp = document.getElementsByTagName('base')[0].href;
-    document.getElementsByTagName('base')[0].href = "";
+    if(document.getElementsByTagName('base').length > 0) {
+        var temp = document.getElementsByTagName('base')[0].href;
+        document.getElementsByTagName('base')[0].href = "";
+    }
     var contentType = "application/pdf";
     var JS_HANDLE = "SitewaertsDocumentViewer";
     var CDV_HANDLE = "SitewaertsDocumentViewer";
@@ -60,8 +62,8 @@ function windowsPdf(url, title, onShow, onClose, onMissingApp, onError) {
             _hideStatusBarOnClose = false;
             window.StatusBar.hide();
         }
-
-        document.getElementsByTagName('base')[0].href = temp;
+        if(document.getElementsByTagName('base').length > 0)
+            document.getElementsByTagName('base')[0].href = temp;
         if (next)
             next();
     }
