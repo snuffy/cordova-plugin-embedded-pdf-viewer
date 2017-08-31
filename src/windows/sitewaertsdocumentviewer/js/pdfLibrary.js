@@ -73,40 +73,36 @@ pdfLibrary = {
                     // return no stream (not needed)
                     _filePointer = filePtr;
                     completeDispatch({write: false, filePointer: filePtr});
-                }, function (error)
-                {
-                    if (_canceled)
-                        return errorDispatch(error);
+                }, function (error) {
+                    setTimeout(function () {
+                        if (_canceled)
+                            return errorDispatch(error);
 
-                    // file not exists: create it
-                    tempFolder.createFileAsync(filename,
+                        // file not exists: create it
+                        tempFolder.createFileAsync(filename,
                             Windows.Storage.CreationCollisionOption.replaceExisting)
-                            .then(function (filePtr)
-                            {
+                            .then(function (filePtr) {
                                 // created new file
                                 // return the stream
                                 _filePointer = filePtr;
                                 return filePtr.openAsync(
-                                        Windows.Storage.FileAccessMode.readWrite);
+                                    Windows.Storage.FileAccessMode.readWrite);
                             })
-                            .then(function (os)
-                            {
+                            .then(function (os) {
                                 return {
                                     write: true,
                                     filePointer: _filePointer,
                                     os: os
                                 };
                             })
-                            .done(function (result)
-                            {
+                            .done(function (result) {
                                 completeDispatch(result);
-                            }, function (error)
-                            {
-                                _cleanup().done(function ()
-                                {
+                            }, function (error) {
+                                _cleanup().done(function () {
                                     errorDispatch(error);
                                 })
                             });
+                    }, 200);
                 });
 
 
