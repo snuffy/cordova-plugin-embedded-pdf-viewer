@@ -19,7 +19,6 @@ var options = {
                 headerColor:"#000000",  //Not supported under iOS and Windows
                 tintColor: "#000000",   //Not supported under Android and Windows
                 showScroll:true,        //Not supported under iOS and Windows
-                showShareButton:true,   //Not supported under iOS and Windows
                 showCloseButton:true,   //Not supported under iOS and Windows
                 swipeHorizontal:false   //Not supported under iOS and Windows
               };
