@@ -33,7 +33,7 @@
         </config-file>
 
         <!-- Libs -->
-        <source-file src="src/android/pdfviewer-library.aar" target-dir="libs"/>
+        <lib-file src="src/android/pdfviewer-library.aar"/>
         <framework src="src/android/AndroidNativePDFViewer.gradle" custom="true" type="gradleReference" />
     </platform>
 
