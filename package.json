@@ -1,25 +1,23 @@
 {
   "name": "cordova-plugin-android-native-pdfviewer",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Cordova plugin Android Pdf viewer",
   "cordova": {
     "id": "cordova-plugin-android-native-pdfviewer",
     "platforms": [
-      "android"
+      "android",
+      "ios",
+      "windows"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neinhart/cordova-plugin-android-native-pdfviewer.git"
+    "url": "git+https://stash.itizzimo.com/scm/cor/cordova-plugin-embedded-pdf-viewer.git"
   },
   "keywords": [
     "ecosystem:cordova",
     "cordova-android"
   ],
-  "author": "neinhart",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/neinhart/cordova-plugin-android-native-pdfviewer/issues"
-  },
-  "homepage": "https://github.com/neinhart/cordova-plugin-android-native-pdfviewer#readme"
+  "author": "Florian Pechwitz",
+  "license": "ISC"
 }
