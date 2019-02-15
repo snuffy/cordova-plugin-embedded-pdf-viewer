@@ -34,7 +34,7 @@
 
         <!-- Libs -->
         <lib-file src="src/android/pdfviewer-library.aar"/>
-        <framework src="src/android/AndroidNativePDFViewer.gradle" custom="true" type="gradleReference" />
+        <framework src="src/android/AndroidNativePdfViewer.gradle" custom="true" type="gradleReference" />
     </platform>
 
 
