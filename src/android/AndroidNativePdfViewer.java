@@ -9,15 +9,32 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import xyz.guutong.androidpdfviewer.PdfViewActivity;
+
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 
 /**
  * This class echoes a string called from JavaScript.
  */
 public class AndroidNativePdfViewer extends CordovaPlugin {
+    private static final int PERMISSION_REQUEST_ID = 15240;
     private CallbackContext callbackContext;
+    private String action;
+    private JSONArray args;
+
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        if (!this.cordova.hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) && (action.equals("openPdfUrl") || action.equals("openPdfUri"))) {
+            this.callbackContext = callbackContext;
+            this.action = action;
+            this.args = args;
+
+            this.cordova.requestPermission(this, PERMISSION_REQUEST_ID, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+            return true;
+        }
         
         if (action.equals("openPdfUrl")) {
             this.callbackContext = callbackContext;
@@ -113,6 +130,23 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
             return false;
         }
         return false;
+    }
+
+    @Override
+    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException {
+        super.onRequestPermissionResult(requestCode, permissions, grantResults);
+
+        if (requestCode != PERMISSION_REQUEST_ID) {
+            return;
+        }
+
+        if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            execute(this.action, this.args, this.callbackContext);
+            this.action = null;
+            this.args = null;
+        } else {
+            callbackContext.error("Storage permission wasn't granted");
+        }
     }
 
     void failResult(String reason) {
