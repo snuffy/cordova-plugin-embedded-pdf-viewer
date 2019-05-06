@@ -4,7 +4,7 @@
 ### Installation cordova plugin 
 
 ```
-$ cordova plugin add https://stash.itizzimo.com/scm/cor/cordova-plugin-embedded-pdf-viewer.git --save
+$ cordova plugin add https://github.com/simplifier-ag/cordova-plugin-embedded-pdf-viewer.git --save
 ```
 
 ### Supported Platforms
