@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-embedded-pdf-viewer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Cordova plugin Android Pdf viewer",
   "cordova": {
     "id": "cordova-plugin-embedded-pdf-viewer",
