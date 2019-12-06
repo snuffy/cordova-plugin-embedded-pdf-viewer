@@ -75,7 +75,13 @@
     NSArray *activityItems = [NSArray arrayWithObjects:url, nil];
     
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        activityViewController.popoverPresentationController.sourceView = self.vc.view;
+        activityViewController.popoverPresentationController.sourceRect = CGRectMake(self.vc.view.bounds.size.width/2, self.vc.view.bounds.size.height/4, 0, 0);
+    } else {
+        activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    }
     
     [self.vc presentViewController:activityViewController animated:YES completion:nil];
     
