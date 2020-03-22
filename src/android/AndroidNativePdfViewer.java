@@ -110,7 +110,7 @@ public class AndroidNativePdfViewer extends CordovaPlugin {
                 intent.putExtra(PdfViewActivity.EXTRA_TOOLBAR_COLOR, headerColor);
                 intent.putExtra(PdfViewActivity.EXTRA_SHOW_SCROLL, showScroll);
                 intent.putExtra(PdfViewActivity.EXTRA_SWIPE_HORIZONTAL, swipeHorizontal);
-                intent.putExtra(PdfViewActivity.EXTRA_SHOW_SHARE_BUTTON, false);
+                intent.putExtra(PdfViewActivity.EXTRA_SHOW_SHARE_BUTTON, true);
                 intent.putExtra(PdfViewActivity.EXTRA_SHOW_CLOSE_BUTTON, showCloseButton);
 
                 cordova.startActivityForResult(this, intent, 1);
